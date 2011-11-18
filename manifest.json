@@ -1,0 +1,9 @@
+{
+  "name": "defenestrate",
+  "version": "1.0",
+  "description": "Close tabs that are already open.",
+  "background_page": "background.html",
+  "permissions": [
+    "tabs"
+  ]
+}

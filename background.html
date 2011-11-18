@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+<script type="text/javascript">
+
+var tabs = {};
+
+chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+  if (changeInfo.status == 'loading') {
+    chrome.windows.getAll({populate: true}, function (windows) {
+      $.each(windows, function () {
+        $.each(this.tabs, function () {
+          if (this.url == changeInfo.url && this.id != tabId) {
+            chrome.tabs.remove(this.id);
+          }
+        })
+      });
+    });
+  }
+});
+chrome.tabs.onSelectionChanged.addListener(function (tabId, selectInfo) {
+});
+</script>
+	</head>
+	<body>
+	</body>
+</html>
